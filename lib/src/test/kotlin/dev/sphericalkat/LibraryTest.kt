@@ -5,11 +5,19 @@ package dev.sphericalkat
 
 import dev.sphericalkat.sublimefuzzy.Fuzzy
 import kotlin.test.Test
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class LibraryTest {
-    @Test fun testSomeLibraryMethod() {
-        val classUnderTest = Fuzzy()
-        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'")
+class FuzzyTest {
+    @Test
+    fun `fuzzy match simple success`() {
+        val result = Fuzzy.fuzzyMatchSimple("test", "tests")
+        assertTrue(result, "Each character in pattern should be found sequentially in str")
+    }
+
+    @Test
+    fun `fuzzy match simple failure`() {
+        val result = Fuzzy.fuzzyMatchSimple("test", "tset")
+        assertFalse(result, "Each character in pattern should be found sequentially in str")
     }
 }
