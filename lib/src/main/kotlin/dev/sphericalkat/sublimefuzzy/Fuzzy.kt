@@ -6,6 +6,7 @@ object Fuzzy {
      *
      * @param pattern the pattern to match
      * @param str the string to search
+     * @return A boolean representing the match status
      */
     fun fuzzyMatchSimple(pattern: String, str: String): Boolean {
         var patternIdx = 0
@@ -164,6 +165,12 @@ object Fuzzy {
         return Pair(false, outScore)
     }
 
+    /**
+     * Performs a fuzzy search to find pattern inside a string
+     * @param pattern the the pattern to match
+     * @param str the string to search
+     * @return a [Pair] containing the match status as a [Boolean] and match score as an [Int]
+     */
     fun fuzzyMatch(pattern: String, str: String): Pair<Boolean, Int> {
         val recursionCount = 0
         val recursionLimit = 10
