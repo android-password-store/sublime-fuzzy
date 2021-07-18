@@ -1,18 +1,12 @@
 plugins {
-  id("org.jetbrains.kotlin.jvm") version "1.4.32"
-  id("org.jetbrains.dokka") version "1.4.30"
-  id("com.vanniktech.maven.publish") version "0.13.0"
-  id("com.ncorti.ktfmt.gradle") version "0.5.0"
+  id("org.jetbrains.kotlin.jvm") version "1.5.21"
+  id("org.jetbrains.dokka") version "1.5.0"
+  id("com.vanniktech.maven.publish") version "0.17.0"
+  id("com.ncorti.ktfmt.gradle") version "0.6.0"
 }
 
 repositories {
   mavenCentral()
-  maven("https://dl.bintray.com/kotlin/kotlinx") {
-    name = "KotlinX Bintray"
-    content {
-      includeModule("org.jetbrains.kotlinx", "kotlinx-html-jvm")
-    }
-  }
 }
 
 dependencies {

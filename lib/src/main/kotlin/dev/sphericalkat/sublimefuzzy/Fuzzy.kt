@@ -16,8 +16,8 @@ object Fuzzy {
     val strLength = str.length
 
     while (patternIdx != patternLength && strIdx != strLength) {
-      val patternChar = pattern.toCharArray()[patternIdx].toLowerCase()
-      val strChar = str.toCharArray()[strIdx].toLowerCase()
+      val patternChar = pattern.toCharArray()[patternIdx].lowercaseChar()
+      val strChar = str.toCharArray()[strIdx].lowercaseChar()
       if (patternChar == strChar) ++patternIdx
       ++strIdx
     }
@@ -136,7 +136,7 @@ object Fuzzy {
           // camelcase
           val neighbour = str[currIdx - 1]
           val curr = str[currIdx]
-          if (neighbour != neighbour.toUpperCase() && curr != curr.toLowerCase()) {
+          if (neighbour != neighbour.uppercaseChar() && curr != curr.lowercaseChar()) {
             outScore += Constants.CAMEL_BONUS
           }
           val isNeighbourSeparator = neighbour == '_' || neighbour == ' '
