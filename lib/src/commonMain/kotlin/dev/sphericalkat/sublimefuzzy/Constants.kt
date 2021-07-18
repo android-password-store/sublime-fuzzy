@@ -1,6 +1,6 @@
 package dev.sphericalkat.sublimefuzzy
 
-object Constants {
+internal object Constants {
   const val SEQUENTIAL_BONUS = 15
   const val SEPARATOR_BONUS = 30
   const val CAMEL_BONUS = 30

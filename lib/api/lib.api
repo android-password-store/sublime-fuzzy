@@ -1,0 +1,5 @@
+public final class dev/sphericalkat/sublimefuzzy/Fuzzy {
+	public static final fun fuzzyMatch (Ljava/lang/String;Ljava/lang/String;)Lkotlin/Pair;
+	public static final fun fuzzyMatchSimple (Ljava/lang/String;Ljava/lang/String;)Z
+}
+
