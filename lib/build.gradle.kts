@@ -1,9 +1,9 @@
 plugins {
   kotlin("multiplatform")
   id("org.jetbrains.dokka") version "1.5.0"
-  id("com.vanniktech.maven.publish") version "0.17.0"
   id("com.ncorti.ktfmt.gradle") version "0.6.0"
   id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.6.0"
+  id("convention.publication")
 }
 
 repositories {
@@ -33,10 +33,6 @@ kotlin {
       }
     }
   }
-}
-
-signing {
-  useGpgCmd()
 }
 
 ktfmt {
