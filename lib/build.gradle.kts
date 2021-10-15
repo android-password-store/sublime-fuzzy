@@ -1,8 +1,8 @@
 plugins {
   kotlin("multiplatform")
-  id("org.jetbrains.dokka") version "1.5.0"
-  id("com.ncorti.ktfmt.gradle") version "0.6.0"
-  id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.6.0"
+  id("org.jetbrains.dokka") version "1.5.31"
+  id("com.ncorti.ktfmt.gradle") version "0.7.0"
+  id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.8.0-RC"
   id("convention.publication")
 }
 
