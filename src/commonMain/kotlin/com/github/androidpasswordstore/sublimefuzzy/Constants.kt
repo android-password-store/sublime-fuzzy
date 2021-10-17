@@ -1,4 +1,4 @@
-package dev.sphericalkat.sublimefuzzy
+package com.github.androidpasswordstore.sublimefuzzy
 
 internal object Constants {
   const val SEQUENTIAL_BONUS = 15

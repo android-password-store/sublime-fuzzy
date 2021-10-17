@@ -1,6 +1,6 @@
 @file:JvmName("Fuzzy")
 
-package dev.sphericalkat.sublimefuzzy
+package com.github.androidpasswordstore.sublimefuzzy
 
 /**
  * Performs a fuzzy search to find pattern inside a string

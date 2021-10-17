@@ -1,4 +1,4 @@
-package dev.sphericalkat.sublimefuzzy
+package com.github.androidpasswordstore.sublimefuzzy
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
