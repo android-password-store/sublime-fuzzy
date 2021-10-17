@@ -16,6 +16,13 @@ configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
   js(BOTH) {
     browser()
     nodejs()
+    compilations.all {
+      kotlinOptions {
+        moduleKind = "umd"
+        sourceMap = true
+        sourceMapEmbedSources = null
+      }
+    }
   }
   ios()
   linuxX64()
