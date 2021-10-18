@@ -8,7 +8,6 @@ All notable changes to this project will be documented in this file.
 
 - The library is now KMP compatible, available for JVM, JS, iOS, Linux, macOS, and Windows.
 - The package name has been changed to `com.github.androidpasswordstore.sublimefuzzy`
-- All methods are now implemented as top-level functions
 
 ## [1.0.0] - 2021-04-07
 
