@@ -27,13 +27,11 @@ jobs:
         java-version: '17'
         cache: 'gradle'
 
-    - name: Cache Kotlin/Native compiler for Unix
+    - name: Cache Kotlin/Native compiler
       uses: actions/cache@v2.1.7
-      if: contains(matrix.os, 'ubuntu') || contains(matrix.os, 'macos')
       with:
         path: ~/.konan
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: ${{ runner.os }}-gradle-
+        key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
     - name: Run unit tests
       uses: gradle/gradle-build-action@v2.1.0
