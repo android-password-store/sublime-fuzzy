@@ -23,6 +23,8 @@ pluginManagement {
   }
 }
 
+include("sample")
+
 dependencyResolutionManagement {
   repositories {
     mavenCentral()
