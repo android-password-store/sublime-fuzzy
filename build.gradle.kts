@@ -3,7 +3,7 @@ plugins {
   id("org.jetbrains.dokka")
   id("com.ncorti.ktfmt.gradle")
   id("org.jetbrains.kotlinx.binary-compatibility-validator")
-  id("convention.publication")
+  id("com.vanniktech.maven.publish")
 }
 
 configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
