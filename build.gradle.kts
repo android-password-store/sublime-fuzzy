@@ -6,7 +6,7 @@ plugins {
   id("com.vanniktech.maven.publish")
 }
 
-configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
+kotlin {
   explicitApi()
   jvm()
   js(BOTH) {
@@ -24,9 +24,7 @@ configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
   linuxX64()
   mingwX64()
   macosX64()
-}
 
-kotlin {
   sourceSets {
     val commonMain by getting
     val commonTest by getting {
