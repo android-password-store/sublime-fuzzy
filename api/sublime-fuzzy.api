@@ -1,4 +1,5 @@
 public final class com/github/androidpasswordstore/sublimefuzzy/Fuzzy {
+	public static final field INSTANCE Lcom/github/androidpasswordstore/sublimefuzzy/Fuzzy;
 	public static final fun fuzzyMatch (Ljava/lang/String;Ljava/lang/String;)Lkotlin/Pair;
 	public static final fun fuzzyMatchSimple (Ljava/lang/String;Ljava/lang/String;)Z
 }
