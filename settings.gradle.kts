@@ -7,11 +7,11 @@ pluginManagement {
     includeBuild("convention-plugins")
   }
   plugins {
-    kotlin("multiplatform") version "1.5.31" apply false
-    id("org.jetbrains.dokka") version "1.5.31" apply false
-    id("com.ncorti.ktfmt.gradle") version "0.7.0" apply false
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.8.0-RC" apply false
-    id("convention.publication") apply false
+    kotlin("multiplatform") version "1.6.10"
+    id("org.jetbrains.dokka") version "1.6.10"
+    id("com.ncorti.ktfmt.gradle") version "0.7.0"
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.8.0"
+    id("convention.publication")
   }
 }
 
