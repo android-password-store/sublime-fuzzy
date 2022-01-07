@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.0.0-alpha02] - 2022-01-08
+
+### Changed
+
+- Fix an API visibility error that resulted in match methods being unavailable from public API
+
+## [2.0.0-alpha01] - 2022-01-08
+
 ### Changed
 
 - The library is now KMP compatible, available for JVM, JS, iOS, Linux, macOS, and Windows.
@@ -19,7 +27,11 @@ All notable changes to this project will be documented in this file.
 
 Initial release
 
-[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v1.0.0..develop
+[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha02..develop
+
+[2.0.0-alpha02]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha01..v2.0.0-alpha02
+
+[2.0.0-alpha01]: https://github.com/android-password-store/sublime-fuzzy/compare/v1.0.0..v2.0.0-alpha01
 
 [1.0.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v1.0.0-alpha01..v1.0.0
 
