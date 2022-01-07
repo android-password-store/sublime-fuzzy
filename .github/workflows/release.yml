@@ -1,0 +1,64 @@
+on:
+  push:
+    tags:
+      - v*
+
+name: Release to Maven Central
+jobs:
+  check:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-20.04
+          - macos-11
+          - windows-2022
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2.4.0
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2.4.0
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+        cache: 'gradle'
+
+    - name: Cache Kotlin/Native compiler
+      uses: actions/cache@v2.1.7
+      with:
+        path: ~/.konan
+        key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+
+    - name: Publish Linux artifacts
+      if: matrix.os == 'ubuntu-20.04'
+      uses: gradle/gradle-build-action@v2.1.0
+      with:
+        arguments: publishJsPublicationToMavenCentralRepository publishJvmPublicationToMavenCentralRepository publishLinuxX64PublicationToMavenCentralRepository
+      env:
+        ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
+        ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
+        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
+        ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
+
+    - name: Publish windows artifacts
+      if: matrix.os == 'windows-2022'
+      uses: gradle/gradle-build-action@v2.1.0
+      with:
+        arguments: publishMingwX64PublicationToMavenCentralRepository
+      env:
+        ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
+        ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
+        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
+        ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
+
+    - name: Publish macOS artifacts
+      if: matrix.os == 'macos-11'
+      uses: gradle/gradle-build-action@v2.1.0
+      with:
+        arguments: publishAllPublicationsToMavenRepository
+      env:
+        ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
+        ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
+        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
+        ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
