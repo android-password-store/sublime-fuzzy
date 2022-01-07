@@ -5,7 +5,7 @@ on:
 
 name: Release to Maven Central
 jobs:
-  check:
+  release:
     strategy:
       matrix:
         os:
