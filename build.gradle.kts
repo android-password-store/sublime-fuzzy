@@ -10,8 +10,8 @@ kotlin {
   explicitApi()
   jvm()
   js(BOTH) {
-    browser()
-    nodejs()
+    nodejs {}
+    browser {}
     compilations.all {
       kotlinOptions {
         moduleKind = "umd"
@@ -20,13 +20,25 @@ kotlin {
       }
     }
   }
-  ios()
-  linuxX64()
-  mingwX64()
+  iosX64()
+  iosArm32()
+  iosArm64()
+  tvosX64()
+  tvosArm64()
+  watchosX86()
+  watchosX64()
+  watchosArm32()
+  watchosArm64()
   macosX64()
+  mingwX86()
+  mingwX64()
+  linuxX64()
+  macosArm64()
+  iosSimulatorArm64()
+  watchosSimulatorArm64()
+  tvosSimulatorArm64()
 
   sourceSets {
-    val commonMain by getting
     val commonTest by getting {
       dependencies {
         implementation("org.jetbrains.kotlin:kotlin-test")
