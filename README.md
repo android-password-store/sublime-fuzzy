@@ -8,10 +8,20 @@ It is available as a Kotlin Multiplatform library for the following platforms
 - JVM
 - NodeJS
 - Browsers (JavaScript)
-- iOS
 - Linux x64
 - MingW x64
+- MingW x86
+- iOS arm32
+- iOS arm64
+- iOS x64
+- tvOS arm64
+- tvOS x64
+- watchOS arm32
+- watchOS arm64
 - macOS x64
+- iOS simulator arm64
+- tvOS simulator arm64
+- watchOS simulator arm64
 
 ## Downloading
 
