@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.0.0] - 2022-01-11
+
+- No changes from [2.0.0-alpha03]
+
 ## [2.0.0-alpha03] - 2022-01-08
 
 ### Changed
@@ -33,7 +37,9 @@ All notable changes to this project will be documented in this file.
 
 Initial release
 
-[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha03..develop
+[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0..develop
+
+[2.0.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha03..v2.0.0
 
 [2.0.0-alpha03]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha02..v2.0.0-alpha03
 
