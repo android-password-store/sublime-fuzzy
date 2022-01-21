@@ -20,15 +20,15 @@ class FuzzyTest {
 
   @Test
   fun fuzzy_match_success() {
-    val (match, score) = Fuzzy.fuzzyMatch("fot", "FbxImporter.h")
-    assertTrue(match)
-    assertEquals(105, score)
+    val result = Fuzzy.fuzzyMatch("fot", "FbxImporter.h")
+    assertTrue(result.first)
+    assertEquals(105, result.second)
   }
 
   @Test
   fun fuzzy_match_failure() {
-    val (match, score) = Fuzzy.fuzzyMatch("fot", "kot")
-    assertFalse(match)
-    assertEquals(0, score)
+    val result = Fuzzy.fuzzyMatch("fot", "kot")
+    assertFalse(result.first)
+    assertEquals(0, result.second)
   }
 }
