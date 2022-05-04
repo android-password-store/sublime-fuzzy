@@ -32,7 +32,7 @@ jobs:
 
     - name: Publish Linux artifacts
       if: matrix.os == 'ubuntu-20.04'
-      uses: gradle/gradle-build-action@v2.1.0
+      uses: gradle/gradle-build-action@v2.1.5
       with:
         arguments: publishLinuxX64PublicationToMavenCentralRepository
       env:
@@ -43,7 +43,7 @@ jobs:
 
     - name: Publish windows artifacts
       if: matrix.os == 'windows-2022'
-      uses: gradle/gradle-build-action@v2.1.0
+      uses: gradle/gradle-build-action@v2.1.5
       with:
         arguments: publishMingwX64PublicationToMavenCentralRepository publishMingwX86PublicationToMavenRepository
       env:
@@ -54,7 +54,7 @@ jobs:
 
     - name: Publish macOS artifacts
       if: matrix.os == 'macos-11'
-      uses: gradle/gradle-build-action@v2.1.0
+      uses: gradle/gradle-build-action@v2.1.5
       with:
         arguments: publishAllPublicationsToMavenRepository
       env:
