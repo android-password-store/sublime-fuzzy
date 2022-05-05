@@ -16,7 +16,7 @@ pluginManagement {
     eachPlugin {
       when (requested.id.id) {
         "com.vanniktech.maven.publish" -> {
-          useModule("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
+          useModule("com.vanniktech:gradle-maven-publish-plugin:0.19.0")
         }
       }
     }
