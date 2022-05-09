@@ -2,7 +2,14 @@ rootProject.name = "sublime-fuzzy"
 
 pluginManagement {
   repositories {
-    gradlePluginPortal()
+    exclusiveContent {
+      forRepository(::gradlePluginPortal)
+      filter {
+        listOf("com.diffplug.spotless", "org.jetbrains.kotlin.multiplatform").forEach { plugin ->
+          includeModule(plugin, "${plugin}.gradle.plugin")
+        }
+      }
+    }
     mavenCentral()
   }
   plugins {
