@@ -1,3 +1,7 @@
+import org.gradle.api.tasks.testing.Test
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.gradle.kotlin.dsl.withType
+
 plugins {
   kotlin("multiplatform")
   id("org.jetbrains.dokka")
@@ -61,6 +65,11 @@ kotlin {
       }
     }
   }
+}
+
+tasks.withType<Test>().configureEach {
+  testLogging { events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED) }
+  doNotTrackState("Prevent caching of tests so they are always executed")
 }
 
 signing {
