@@ -1,9 +1,24 @@
 plugins {
   kotlin("multiplatform")
   id("org.jetbrains.dokka")
-  id("com.ncorti.ktfmt.gradle")
+  id("com.diffplug.spotless")
   id("org.jetbrains.kotlinx.binary-compatibility-validator")
   id("com.vanniktech.maven.publish")
+}
+
+val KTFMT_VERSION = "0.37"
+
+spotless {
+  kotlin {
+    ktfmt(KTFMT_VERSION).googleStyle()
+    target("**/*.kt")
+    targetExclude("**/build/")
+  }
+  kotlinGradle {
+    ktfmt(KTFMT_VERSION).googleStyle()
+    target("**/*.kts")
+    targetExclude("**/build/")
+  }
 }
 
 kotlin {
@@ -46,11 +61,6 @@ kotlin {
       }
     }
   }
-}
-
-ktfmt {
-  googleStyle()
-  maxWidth.set(100)
 }
 
 signing {

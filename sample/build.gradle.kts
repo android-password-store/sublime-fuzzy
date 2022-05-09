@@ -5,8 +5,9 @@ plugins {
   kotlin("multiplatform")
 }
 
-fun KotlinNativeTargetWithHostTests.configureTarget() =
-    binaries { executable { entryPoint = "main" } }
+fun KotlinNativeTargetWithHostTests.configureTarget() = binaries {
+  executable { entryPoint = "main" }
+}
 
 kotlin {
   js(LEGACY) {
@@ -26,11 +27,5 @@ kotlin {
   mingwX64 { configureTarget() }
   macosX64 { configureTarget() }
 
-  sourceSets {
-    sourceSets["commonMain"].apply {
-      dependencies {
-        implementation(project(":"))
-      }
-    }
-  }
+  sourceSets { sourceSets["commonMain"].apply { dependencies { implementation(project(":")) } } }
 }
