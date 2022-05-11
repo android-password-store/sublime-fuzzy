@@ -15,7 +15,7 @@ pluginManagement {
   plugins {
     kotlin("multiplatform") version "1.6.21"
     id("org.jetbrains.dokka") version "1.6.21"
-    id("com.diffplug.spotless") version "6.5.2"
+    id("com.diffplug.spotless") version "6.6.0"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.9.0"
     id("com.vanniktech.maven.publish") version "0.19.0"
   }
