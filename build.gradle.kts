@@ -10,11 +10,7 @@ plugins {
   id("com.vanniktech.maven.publish")
 }
 
-val KTFMT_VERSION = "0.37"
-
-mavenPublish {
-  sonatypeHost = null
-}
+mavenPublish { sonatypeHost = null }
 
 publishing {
   repositories {
@@ -35,13 +31,14 @@ publishing {
 }
 
 spotless {
+  val ktfmtVersion = "0.37"
   kotlin {
-    ktfmt(KTFMT_VERSION).googleStyle()
+    ktfmt(ktfmtVersion).googleStyle()
     target("**/*.kt")
     targetExclude("**/build/")
   }
   kotlinGradle {
-    ktfmt(KTFMT_VERSION).googleStyle()
+    ktfmt(ktfmtVersion).googleStyle()
     target("**/*.kts")
     targetExclude("**/build/")
   }
