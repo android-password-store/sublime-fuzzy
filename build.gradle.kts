@@ -78,6 +78,8 @@ kotlin {
   iosSimulatorArm64()
   watchosSimulatorArm64()
   tvosSimulatorArm64()
+  androidNativeArm32()
+  androidNativeArm64()
 
   sourceSets {
     val commonTest by getting {
