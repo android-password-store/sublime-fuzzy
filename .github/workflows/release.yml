@@ -5,14 +5,23 @@ on:
 
 name: Release to Maven Central
 jobs:
-  release:
-    strategy:
-      matrix:
-        os:
-          - ubuntu-20.04
-          - macos-11
-          - windows-2022
-    runs-on: ${{ matrix.os }}
+  create_staging_repository:
+    runs-on: ubuntu-latest
+    name: Create staging repository
+    outputs:
+      repository_id: ${{ steps.create.outputs.repository_id }}
+    steps:
+      - id: create
+        uses: nexus-actions/create-nexus-staging-repo@v1.1
+        with:
+          username: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
+          password: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
+          staging_profile_id: ${{ secrets.NEXUS_PUBLISH_STAGING_PROFILE_ID }}
+          description: ${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }}
+
+  publish:
+    runs-on: macos-11
+    needs: create_staging_repository
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3.0.2
@@ -30,35 +39,64 @@ jobs:
         path: ~/.konan
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
-    - name: Publish Linux artifacts
-      if: matrix.os == 'ubuntu-20.04'
+    - name: Publish
       uses: gradle/gradle-build-action@v2.1.6
       with:
-        arguments: publishLinuxX64PublicationToMavenCentralRepository
+        arguments: publishAllPublicationsToSonatypeRepository
       env:
-        ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
-        ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
         ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
         ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
+        SONATYPE_USERNAME: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
+        SONATYPE_PASSWORD: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
+        SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository_id }}
 
-    - name: Publish windows artifacts
-      if: matrix.os == 'windows-2022'
-      uses: gradle/gradle-build-action@v2.1.6
-      with:
-        arguments: publishMingwX64PublicationToMavenCentralRepository publishMingwX86PublicationToMavenRepository
-      env:
-        ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
-        ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
-        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
-        ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
+  publish_windows:
+    runs-on: windows-latest
+    needs: create_staging_repository
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3.0.2
 
-    - name: Publish macOS artifacts
-      if: matrix.os == 'macos-11'
+    - name: Set up JDK
+      uses: actions/setup-java@v3.3.0
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+        cache: 'gradle'
+
+    - name: Cache Kotlin/Native compiler
+      uses: actions/cache@v3.0.2
+      with:
+        path: ~/.konan
+        key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+
+    - name: Publish Windows artifacts
       uses: gradle/gradle-build-action@v2.1.6
       with:
-        arguments: publishAllPublicationsToMavenRepository
+        arguments: publishMingwX64PublicationToSonatypeRepository publishMingwX86PublicationToSonatypeRepository
       env:
-        ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
-        ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
         ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
         ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
+        SONATYPE_USERNAME: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
+        SONATYPE_PASSWORD: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
+        SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository_id }}
+
+  finalize:
+    runs-on: ubuntu-latest
+    needs: [create_staging_repository, publish, publish_windows]
+    if: ${{ always() && needs.create_staging_repository.result == 'success' }}
+    steps:
+      - name: Discard
+        if: ${{ needs.publish.result != 'success' || needs.publish_windows.result != 'success' }}
+        uses: nexus-actions/drop-nexus-staging-repo@v1
+        with:
+          username: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
+          password: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
+          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
+      - name: Release
+        if: ${{ needs.publish.result == 'success' && needs.publish_windows.result == 'success' }}
+        uses: nexus-actions/release-nexus-staging-repo@v1.2
+        with:
+          username: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
+          password: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
+          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
