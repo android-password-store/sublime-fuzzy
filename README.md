@@ -22,6 +22,8 @@ It is available as a Kotlin Multiplatform library for the following platforms
 - iOS simulator arm64
 - tvOS simulator arm64
 - watchOS simulator arm64
+- Android native arm32
+- Android native arm64
 
 ## Downloading
 
