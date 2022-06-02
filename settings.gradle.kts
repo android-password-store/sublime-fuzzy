@@ -17,7 +17,7 @@ pluginManagement {
     id("org.jetbrains.dokka") version "1.6.21"
     id("com.diffplug.spotless") version "6.6.1"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.10.0"
-    id("com.vanniktech.maven.publish") version "0.19.0"
+    id("com.vanniktech.maven.publish") version "0.20.0"
   }
 }
 
