@@ -10,7 +10,11 @@ plugins {
   id("com.vanniktech.maven.publish")
 }
 
-mavenPublish { sonatypeHost = null }
+@Suppress("UnstableApiUsage")
+mavenPublishing {
+  signAllPublications()
+  pomFromGradleProperties()
+}
 
 publishing {
   repositories {
@@ -79,7 +83,7 @@ kotlin {
   androidNativeArm64()
 
   sourceSets {
-    val commonTest by getting {
+    getByName("commonTest") {
       dependencies {
         implementation("org.jetbrains.kotlin:kotlin-test")
         implementation("org.jetbrains.kotlin:kotlin-test-junit")
