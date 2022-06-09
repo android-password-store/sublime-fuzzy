@@ -29,15 +29,15 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3.3.0
       with:
-        distribution: 'zulu'
-        java-version: '17'
-        cache: 'gradle'
+        distribution: temurin
+        java-version: 18
+        cache: gradle
 
     - name: Cache Kotlin/Native compiler
       uses: actions/cache@v3.0.4
       with:
         path: ~/.konan
-        key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+        key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'settings.gradle.kts') }}
 
     - name: Publish
       uses: gradle/gradle-build-action@v2.2.0
@@ -60,15 +60,15 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3.3.0
       with:
-        distribution: 'zulu'
-        java-version: '17'
-        cache: 'gradle'
+        distribution: temurin
+        java-version: 18
+        cache: gradle
 
     - name: Cache Kotlin/Native compiler
       uses: actions/cache@v3.0.4
       with:
         path: ~/.konan
-        key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+        key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'settings.gradle.kts') }}
 
     - name: Publish Windows artifacts
       uses: gradle/gradle-build-action@v2.2.0
