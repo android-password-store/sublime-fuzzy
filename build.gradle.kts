@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
@@ -20,7 +21,7 @@ version = requireNotNull(project.findProperty("VERSION_NAME"))
 mavenPublishing {
   signAllPublications()
   pomFromGradleProperties()
-  configure(KotlinMultiplatform())
+  configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaHtml")))
 }
 
 publishing {
