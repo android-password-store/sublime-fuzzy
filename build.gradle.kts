@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.KotlinMultiplatform
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.withType
@@ -7,13 +8,19 @@ plugins {
   id("org.jetbrains.dokka")
   id("com.diffplug.spotless")
   id("org.jetbrains.kotlinx.binary-compatibility-validator")
-  id("com.vanniktech.maven.publish")
+  id("com.vanniktech.maven.publish.base")
+  id("signing")
 }
+
+group = requireNotNull(project.findProperty("GROUP"))
+
+version = requireNotNull(project.findProperty("VERSION_NAME"))
 
 @Suppress("UnstableApiUsage")
 mavenPublishing {
   signAllPublications()
   pomFromGradleProperties()
+  configure(KotlinMultiplatform())
 }
 
 publishing {
