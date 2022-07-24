@@ -17,6 +17,8 @@ group = requireNotNull(project.findProperty("GROUP"))
 
 version = requireNotNull(project.findProperty("VERSION_NAME"))
 
+apiValidation { ignoredProjects.add("benchmark") }
+
 @Suppress("UnstableApiUsage")
 mavenPublishing {
   signAllPublications()
