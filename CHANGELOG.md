@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Upgrade to Kotlin 1.7.10
+
 ## [2.2.0] - 2022-06-09
 
 - Upgrade to Kotlin 1.7.0
