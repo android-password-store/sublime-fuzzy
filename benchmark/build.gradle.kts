@@ -17,18 +17,8 @@ benchmark { targets { register("jvm") } }
 
 kotlin {
   jvm()
-  js(LEGACY) {
-    browser()
-    nodejs()
-    binaries.executable()
-    compilations.all {
-      kotlinOptions {
-        moduleKind = "umd"
-        sourceMap = true
-        sourceMapEmbedSources = null
-      }
-    }
-  }
+  js { nodejs() }
+  js("jsIR", IR) { nodejs() }
   if (HostManager.hostIsLinux) linuxX64("native") { configureTarget() }
   if (HostManager.hostIsMingw) mingwX64("native") { configureTarget() }
   if (HostManager.hostIsMac) macosX64("native") { configureTarget() }
