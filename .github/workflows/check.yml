@@ -42,4 +42,4 @@ jobs:
     - name: Run benchmarks
       uses: gradle/gradle-build-action@v2.2.2
       with:
-        arguments: :benchmark:jvmBenchmark --stacktrace
+        arguments: :benchmark:benchmark --stacktrace
