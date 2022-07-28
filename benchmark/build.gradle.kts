@@ -13,7 +13,14 @@ fun KotlinNativeTargetWithHostTests.configureTarget() = binaries {
 
 allOpen { annotation("org.openjdk.jmh.annotations.State") }
 
-benchmark { targets { register("jvm") } }
+benchmark {
+  targets {
+    register("js")
+    register("jsIR")
+    register("jvm")
+    register("native")
+  }
+}
 
 kotlin {
   jvm()
