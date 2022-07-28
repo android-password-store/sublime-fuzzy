@@ -30,12 +30,8 @@ kotlin {
   if (HostManager.hostIsMingw) mingwX64("native") { configureTarget() }
   if (HostManager.hostIsMac) macosX64("native") { configureTarget() }
 
-  sourceSets {
-    sourceSets["commonMain"].apply {
-      dependencies {
-        implementation(project(":"))
-        implementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.4")
-      }
-    }
+  sourceSets["commonMain"].dependencies {
+    implementation(project(":"))
+    implementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.4")
   }
 }
