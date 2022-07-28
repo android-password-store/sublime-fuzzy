@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithHostTests
+import org.jetbrains.kotlin.konan.target.HostManager
 
 plugins {
   kotlin("multiplatform")
@@ -28,9 +29,9 @@ kotlin {
       }
     }
   }
-  linuxX64 { configureTarget() }
-  mingwX64 { configureTarget() }
-  macosX64 { configureTarget() }
+  if (HostManager.hostIsLinux) linuxX64("native") { configureTarget() }
+  if (HostManager.hostIsMingw) mingwX64("native") { configureTarget() }
+  if (HostManager.hostIsMac) macosX64("native") { configureTarget() }
 
   sourceSets {
     sourceSets["commonMain"].apply {
