@@ -32,6 +32,6 @@ kotlin {
 
   sourceSets["commonMain"].dependencies {
     implementation(project(":"))
-    implementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.5")
   }
 }
