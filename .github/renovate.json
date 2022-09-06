@@ -8,5 +8,17 @@
       "automerge": true,
       "automergeType": "branch"
     }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": [
+        ".kts$"
+      ],
+      "matchStrings": [
+        "val ktfmtVersion = \"(?<currentValue>.*)\""
+      ],
+      "datasourceTemplate": "maven",
+      "depNameTemplate": "com.facebook:ktfmt"
+    }
   ]
 }
