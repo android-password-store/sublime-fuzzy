@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithHostTests
 import org.jetbrains.kotlin.konan.target.HostManager
 
 plugins {
-  kotlin("multiplatform")
-  id("org.jetbrains.kotlinx.benchmark")
-  id("org.jetbrains.kotlin.plugin.allopen")
+  alias(libs.plugins.kotlinMultiplatform)
+  alias(libs.plugins.kotlinxBenchmark)
+  alias(libs.plugins.allopen)
 }
 
 fun KotlinNativeTargetWithHostTests.configureTarget() = binaries {
@@ -32,6 +32,6 @@ kotlin {
 
   sourceSets["commonMain"].dependencies {
     implementation(project(":"))
-    implementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.5")
+    implementation(libs.kotlinx.benchmark.runtime)
   }
 }

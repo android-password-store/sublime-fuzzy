@@ -1,0 +1,20 @@
+[versions]
+benchmark = "0.4.5"
+kotlin = "1.7.10"
+dokka = "1.7.10"
+
+[libraries]
+kotlin-test-core = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+kotlinx-benchmark-runtime = { module = "org.jetbrains.kotlinx:kotlinx-benchmark-runtime", version.ref = "benchmark" }
+
+[plugins]
+spotless = "com.diffplug.spotless:6.10.0"
+versions = "com.github.ben-manes.versions:0.42.0"
+mavenPublish = "com.vanniktech.maven.publish.base:0.21.0"
+vcu = "nl.littlerobots.version-catalog-update:0.6.1"
+dokka = "org.jetbrains.dokka:1.7.10"
+kotlinMultiplatform = "org.jetbrains.kotlin.multiplatform:1.7.10"
+allopen = "org.jetbrains.kotlin.plugin.allopen:1.7.10"
+kotlinxBenchmark = { id = "org.jetbrains.kotlinx.benchmark", version.ref = "benchmark" }
+kotlinxBCV = "org.jetbrains.kotlinx.binary-compatibility-validator:0.11.1"

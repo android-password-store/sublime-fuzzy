@@ -5,11 +5,11 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.withType
 
 plugins {
-  kotlin("multiplatform")
-  id("org.jetbrains.dokka")
-  id("com.diffplug.spotless")
-  id("org.jetbrains.kotlinx.binary-compatibility-validator")
-  id("com.vanniktech.maven.publish.base")
+  alias(libs.plugins.kotlinMultiplatform)
+  alias(libs.plugins.dokka)
+  alias(libs.plugins.spotless)
+  alias(libs.plugins.kotlinxBCV)
+  alias(libs.plugins.mavenPublish)
   id("signing")
 }
 
@@ -95,8 +95,8 @@ kotlin {
   sourceSets {
     getByName("commonTest") {
       dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-test")
-        implementation("org.jetbrains.kotlin:kotlin-test-junit")
+        implementation(libs.kotlin.test.core)
+        implementation(libs.kotlin.test.junit)
       }
     }
   }
