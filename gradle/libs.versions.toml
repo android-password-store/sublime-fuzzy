@@ -15,4 +15,4 @@ kotlinxBCV = "org.jetbrains.kotlinx.binary-compatibility-validator:0.11.1"
 kotlinxBenchmark = { id = "org.jetbrains.kotlinx.benchmark", version.ref = "benchmark" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 mavenPublish = "com.vanniktech.maven.publish.base:0.22.0"
-spotless = "com.diffplug.spotless:6.10.0"
+spotless = "com.diffplug.spotless:6.11.0"
