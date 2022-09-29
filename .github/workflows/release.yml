@@ -40,7 +40,7 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'settings.gradle.kts') }}
 
     - name: Publish
-      uses: gradle/gradle-build-action@v2.3.1
+      uses: gradle/gradle-build-action@v2.3.2
       with:
         arguments: publishAllPublicationsToSonatypeRepository
       env:
@@ -71,7 +71,7 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'settings.gradle.kts') }}
 
     - name: Publish Windows artifacts
-      uses: gradle/gradle-build-action@v2.3.1
+      uses: gradle/gradle-build-action@v2.3.2
       with:
         arguments: publishMingwX64PublicationToSonatypeRepository publishMingwX86PublicationToSonatypeRepository
       env:
