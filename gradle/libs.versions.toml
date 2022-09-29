@@ -1,6 +1,6 @@
 [versions]
 benchmark = "0.4.5"
-kotlin = "1.7.10"
+kotlin = "1.7.20"
 dokka = "1.7.10"
 
 [libraries]
