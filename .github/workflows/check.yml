@@ -35,11 +35,11 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'settings.gradle.kts') }}
 
     - name: Run unit tests
-      uses: gradle/gradle-build-action@v2.3.2
+      uses: gradle/gradle-build-action@v2.3.3
       with:
         arguments: check --stacktrace
 
     - name: Run benchmarks
-      uses: gradle/gradle-build-action@v2.3.2
+      uses: gradle/gradle-build-action@v2.3.3
       with:
         arguments: :benchmark:benchmark --stacktrace
