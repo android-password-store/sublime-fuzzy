@@ -1,18 +1,13 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
-  ],
-  "packageRules": [
-    {
-      "matchPackagePatterns": ["*"],
-      "automerge": true,
-      "automergeType": "branch"
-    }
+    "config:base",
+    "github>msfjarvis/shared-workflows//renovate/automerge"
   ],
   "regexManagers": [
     {
       "fileMatch": [
-        ".kts$"
+        "build.gradle.kts$"
       ],
       "matchStrings": [
         "val ktfmtVersion = \"(?<currentValue>.*)\""
