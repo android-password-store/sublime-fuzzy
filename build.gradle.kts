@@ -3,6 +3,7 @@ import com.vanniktech.maven.publish.KotlinMultiplatform
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.konan.target.HostManager
 
 plugins {
   alias(libs.plugins.kotlinMultiplatform)
@@ -72,25 +73,31 @@ kotlin {
       }
     }
   }
-  iosX64()
-  iosArm32()
-  iosArm64()
-  tvosX64()
-  tvosArm64()
-  watchosX86()
-  watchosX64()
-  watchosArm32()
-  watchosArm64()
-  macosX64()
-  mingwX86()
-  mingwX64()
-  linuxX64()
-  macosArm64()
-  iosSimulatorArm64()
-  watchosSimulatorArm64()
-  tvosSimulatorArm64()
-  androidNativeArm32()
-  androidNativeArm64()
+  if (providers.gradleProperty("enableNativeTargets").isPresent) {
+    if (HostManager.hostIsMac) {
+      iosX64()
+      iosArm32()
+      iosArm64()
+      tvosX64()
+      tvosArm64()
+      watchosX86()
+      watchosX64()
+      watchosArm32()
+      watchosArm64()
+      macosX64()
+      macosArm64()
+      iosSimulatorArm64()
+      watchosSimulatorArm64()
+      tvosSimulatorArm64()
+    }
+    if (HostManager.hostIsMingw) {
+      mingwX86()
+      mingwX64()
+    }
+    linuxX64()
+    androidNativeArm32()
+    androidNativeArm64()
+  }
 
   sourceSets {
     getByName("commonTest") {
@@ -104,7 +111,6 @@ kotlin {
 
 tasks.withType<Test>().configureEach {
   testLogging { events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED) }
-  doNotTrackState("Prevent caching of tests so they are always executed")
 }
 
 signing {

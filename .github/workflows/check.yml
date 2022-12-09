@@ -37,9 +37,9 @@ jobs:
     - name: Run unit tests
       uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # v2.3.3
       with:
-        arguments: check --stacktrace
+        arguments: check -PenableNativeTargets --stacktrace
 
     - name: Run benchmarks
       uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # v2.3.3
       with:
-        arguments: :benchmark:benchmark --stacktrace
+        arguments: :benchmark:benchmark -PenableNativeTargets --stacktrace

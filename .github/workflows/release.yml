@@ -42,7 +42,7 @@ jobs:
     - name: Publish
       uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # v2.3.3
       with:
-        arguments: publishAllPublicationsToSonatypeRepository
+        arguments: publishAllPublicationsToSonatypeRepository -PenableNativeTargets
       env:
         ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
         ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
@@ -73,7 +73,7 @@ jobs:
     - name: Publish Windows artifacts
       uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # v2.3.3
       with:
-        arguments: publishMingwX64PublicationToSonatypeRepository publishMingwX86PublicationToSonatypeRepository
+        arguments: publishMingwX64PublicationToSonatypeRepository publishMingwX86PublicationToSonatypeRepository -PenableNativeTargets
       env:
         ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
         ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}

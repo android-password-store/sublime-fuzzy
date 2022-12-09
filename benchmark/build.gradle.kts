@@ -18,7 +18,9 @@ benchmark {
     register("js")
     register("jsIR")
     register("jvm")
-    register("native")
+    if (providers.gradleProperty("enableNativeTargets").isPresent) {
+      register("native")
+    }
   }
 }
 
@@ -26,9 +28,11 @@ kotlin {
   jvm()
   js { nodejs() }
   js("jsIR", IR) { nodejs() }
-  if (HostManager.hostIsLinux) linuxX64("native") { configureTarget() }
-  if (HostManager.hostIsMingw) mingwX64("native") { configureTarget() }
-  if (HostManager.hostIsMac) macosX64("native") { configureTarget() }
+  if (providers.gradleProperty("enableNativeTargets").isPresent) {
+    if (HostManager.hostIsLinux) linuxX64("native") { configureTarget() }
+    if (HostManager.hostIsMingw) mingwX64("native") { configureTarget() }
+    if (HostManager.hostIsMac) macosX64("native") { configureTarget() }
+  }
 
   sourceSets["commonMain"].dependencies {
     implementation(project(":"))
