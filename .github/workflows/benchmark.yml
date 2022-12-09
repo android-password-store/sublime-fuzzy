@@ -1,13 +1,7 @@
 on:
-  push:
-    branches:
-      - develop
-      - renovate/**
-  pull_request:
-    branches:
-      - develop
+  workflow_dispatch:
 
-name: Run tests
+name: Run benchmarks
 jobs:
   check:
     strategy:
@@ -34,7 +28,7 @@ jobs:
         path: ~/.konan
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'settings.gradle.kts') }}
 
-    - name: Run unit tests
+    - name: Run benchmarks
       uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # v2.3.3
       with:
-        arguments: check -PenableNativeTargets --stacktrace
+        arguments: :benchmark:benchmark -PenableNativeTargets --stacktrace
