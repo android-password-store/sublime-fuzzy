@@ -172,6 +172,7 @@ public object Fuzzy {
 
   /**
    * Performs a fuzzy search to find pattern inside a string
+   *
    * @param pattern the the pattern to match
    * @param str the string to search
    * @return a [Pair] containing the match status as a [Boolean] and match score as an [Int]
