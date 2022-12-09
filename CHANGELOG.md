@@ -53,22 +53,24 @@ All notable changes to this project will be documented in this file.
 
 Initial release
 
-[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.2.1..develop
+[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.2.2..develop
 
-[2.2.1]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.2.1..v2.2.0
+[2.2.2]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.2.1..v2.2.2
 
-[2.2.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.2.0..v2.1.0
+[2.2.1]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.2.0..v2.2.1
 
-[2.1.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.1.0..v2.0.0
+[2.2.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.1.0..v2.2.0
 
-[2.0.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha03..v2.0.0
+[2.1.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0..v2.1.0
 
-[2.0.0-alpha03]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha02..v2.0.0-alpha03
+[2.0.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0..v2.0.0-alpha03
 
-[2.0.0-alpha02]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha01..v2.0.0-alpha02
+[2.0.0-alpha03]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha03..v2.0.0-alpha02
 
-[2.0.0-alpha01]: https://github.com/android-password-store/sublime-fuzzy/compare/v1.0.0..v2.0.0-alpha01
+[2.0.0-alpha02]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha02..v2.0.0-alpha01
 
-[1.0.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v1.0.0-alpha01..v1.0.0
+[2.0.0-alpha01]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.0.0-alpha01..v1.0.0
+
+[1.0.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v1.0.0..v1.0.0-alpha01
 
 [1.0.0-alpha01]: https://github.com/android-password-store/sublime-fuzzy/commits/v1.0.0-alpha01
