@@ -94,7 +94,9 @@ kotlin {
       mingwX86()
       mingwX64()
     }
-    linuxX64()
+    if (HostManager.hostIsLinux) {
+      linuxX64()
+    }
     androidNativeArm32()
     androidNativeArm64()
   }
