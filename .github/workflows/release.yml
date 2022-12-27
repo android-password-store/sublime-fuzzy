@@ -34,7 +34,7 @@ jobs:
         cache: gradle
 
     - name: Cache Kotlin/Native compiler
-      uses: actions/cache@c1a5de879eb890d062a85ee0252d6036480b1fe2 # v3.2.1
+      uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d # v3.2.2
       with:
         path: ~/.konan
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'settings.gradle.kts') }}
@@ -65,7 +65,7 @@ jobs:
         cache: gradle
 
     - name: Cache Kotlin/Native compiler
-      uses: actions/cache@c1a5de879eb890d062a85ee0252d6036480b1fe2 # v3.2.1
+      uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d # v3.2.2
       with:
         path: ~/.konan
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'settings.gradle.kts') }}
