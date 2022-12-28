@@ -62,7 +62,7 @@ spotless {
 kotlin {
   explicitApi()
   jvm()
-  js(BOTH) {
+  js(IR) {
     nodejs {}
     browser {}
     compilations.all {
