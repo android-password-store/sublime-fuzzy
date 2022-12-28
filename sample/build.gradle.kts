@@ -11,7 +11,7 @@ fun KotlinNativeTargetWithHostTests.configureTarget() = binaries {
 }
 
 kotlin {
-  js(LEGACY) {
+  js(IR) {
     browser()
     nodejs()
     binaries.executable()

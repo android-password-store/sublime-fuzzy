@@ -16,7 +16,6 @@ allOpen { annotation("org.openjdk.jmh.annotations.State") }
 benchmark {
   targets {
     register("js")
-    register("jsIR")
     register("jvm")
     if (providers.gradleProperty("enableNativeTargets").isPresent) {
       register("native")
@@ -26,8 +25,7 @@ benchmark {
 
 kotlin {
   jvm()
-  js { nodejs() }
-  js("jsIR", IR) { nodejs() }
+  js(IR) { nodejs() }
   if (providers.gradleProperty("enableNativeTargets").isPresent) {
     if (HostManager.hostIsLinux) linuxX64("native") { configureTarget() }
     if (HostManager.hostIsMingw) mingwX64("native") { configureTarget() }
