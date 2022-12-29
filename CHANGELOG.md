@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ## [2.3.0] - 2022-12-29
 
-- Upgrade to Kotlin 1.8.0
+- Upgrade to Kotlin 1.8.0. The Kotlin JS artifact now only supports IR.
 
 ## [2.2.3] - 2022-12-10
 
