@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.3.1] - 2023-02-10
+
+- Upgrade to Kotlin 1.8.10
+
 ## [2.3.0] - 2022-12-29
 
 - Upgrade to Kotlin 1.8.0. The Kotlin JS artifact now only supports IR.
@@ -61,7 +65,9 @@ All notable changes to this project will be documented in this file.
 
 Initial release
 
-[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.0..develop
+[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.1..develop
+
+[2.3.1]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.0..v2.3.1
 
 [2.3.0]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.2.3..v2.3.0
 
