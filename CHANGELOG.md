@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.3.2] - 2023-04-18
+
+- Upgrade to Kotlin 1.8.20
+
 ## [2.3.1] - 2023-02-10
 
 - Upgrade to Kotlin 1.8.10
@@ -65,7 +69,9 @@ All notable changes to this project will be documented in this file.
 
 Initial release
 
-[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.1..develop
+[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.2..develop
+
+[2.3.2]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.1..v2.3.2
 
 [2.3.1]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.0..v2.3.1
 
