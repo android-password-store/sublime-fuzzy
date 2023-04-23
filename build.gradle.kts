@@ -11,7 +11,6 @@ plugins {
   alias(libs.plugins.spotless)
   alias(libs.plugins.kotlinxBCV)
   alias(libs.plugins.mavenPublish)
-  id("signing")
 }
 
 group = requireNotNull(project.findProperty("GROUP"))
@@ -113,10 +112,4 @@ kotlin {
 
 tasks.withType<Test>().configureEach {
   testLogging { events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED) }
-}
-
-signing {
-  val signingKey: String? by project
-  val signingPassword: String? by project
-  useInMemoryPgpKeys(signingKey, signingPassword)
 }

@@ -44,8 +44,8 @@ jobs:
       with:
         arguments: publishAllPublicationsToSonatypeRepository -PenableNativeTargets
       env:
-        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
-        ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
+        ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
+        ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
         SONATYPE_USERNAME: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
         SONATYPE_PASSWORD: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
         SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository_id }}
@@ -75,8 +75,8 @@ jobs:
       with:
         arguments: publishMingwX64PublicationToSonatypeRepository publishMingwX86PublicationToSonatypeRepository -PenableNativeTargets
       env:
-        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
-        ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
+        ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
+        ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
         SONATYPE_USERNAME: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
         SONATYPE_PASSWORD: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
         SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository_id }}
