@@ -99,6 +99,8 @@ kotlin {
       }
     }
   }
+
+  jvmToolchain { languageVersion.set(JavaLanguageVersion.of(11)) }
 }
 
 tasks.withType<Test>().configureEach {

@@ -36,4 +36,6 @@ kotlin {
     implementation(project(":"))
     implementation(libs.kotlinx.benchmark.runtime)
   }
+
+  jvmToolchain { languageVersion.set(JavaLanguageVersion.of(11)) }
 }
