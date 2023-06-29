@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 - Remove deprecated Kotlin/Native targets. See [kotl.in/native-targets-tiers](https://kotl.in/native-targets-tiers).
+- Fix build configuration error that prevented Linux targets from published. Versions 2.3.0 through 2.3.2 did not have Linux artifacts published.
 
 ## [2.3.2] - 2023-04-18
 
