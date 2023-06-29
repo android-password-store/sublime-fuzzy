@@ -64,22 +64,14 @@ kotlin {
   js(IR) {
     nodejs {}
     browser {}
-    compilations.all {
-      kotlinOptions {
-        moduleKind = "umd"
-        sourceMap = true
-        sourceMapEmbedSources = null
-      }
-    }
+    compilations.configureEach { kotlinOptions { moduleKind = "umd" } }
   }
   if (providers.gradleProperty("enableNativeTargets").isPresent) {
     if (HostManager.hostIsMac) {
       iosX64()
-      iosArm32()
       iosArm64()
       tvosX64()
       tvosArm64()
-      watchosX86()
       watchosX64()
       watchosArm32()
       watchosArm64()
@@ -90,7 +82,6 @@ kotlin {
       tvosSimulatorArm64()
     }
     if (HostManager.hostIsMingw) {
-      mingwX86()
       mingwX64()
     }
     if (HostManager.hostIsLinux) {

@@ -73,7 +73,7 @@ jobs:
     - name: Publish Windows artifacts
       uses: gradle/gradle-build-action@40b6781dcdec2762ad36556682ac74e31030cfe2 # v2.5.1
       with:
-        arguments: publishMingwX64PublicationToSonatypeRepository publishMingwX86PublicationToSonatypeRepository -PenableNativeTargets
+        arguments: publishMingwX64PublicationToSonatypeRepository -PenableNativeTargets
       env:
         ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
         ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}

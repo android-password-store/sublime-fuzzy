@@ -10,8 +10,6 @@ It is available as a Kotlin Multiplatform library for the following platforms
 - Browsers (JavaScript)
 - Linux x64
 - MingW x64
-- MingW x86
-- iOS arm32
 - iOS arm64
 - iOS x64
 - tvOS arm64

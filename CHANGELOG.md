@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Remove deprecated Kotlin/Native targets. See [kotl.in/native-targets-tiers](https://kotl.in/native-targets-tiers).
+
 ## [2.3.2] - 2023-04-18
 
 - Upgrade to Kotlin 1.8.20
