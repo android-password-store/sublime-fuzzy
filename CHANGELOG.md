@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.3.4] - 2023-07-07
+
+- Upgrade to Kotlin 1.9.0
+
 ## [2.3.3] - 2023-06-30
 
 - Remove deprecated Kotlin/Native targets. See [kotl.in/native-targets-tiers](https://kotl.in/native-targets-tiers).
@@ -75,7 +79,9 @@ All notable changes to this project will be documented in this file.
 
 Initial release
 
-[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.3..develop
+[Unreleased]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.4..develop
+
+[2.3.4]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.3..v2.3.4
 
 [2.3.3]: https://github.com/android-password-store/sublime-fuzzy/compare/v2.3.2..v2.3.3
 
