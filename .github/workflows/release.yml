@@ -39,7 +39,7 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'gradle/libs.versions.toml') }}
 
     - name: Publish
-      uses: gradle/gradle-build-action@915a66c096a03101667f9df2e56c9efef558b165 # v2.6.1
+      uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2.7.0
       with:
         arguments: publishAllPublicationsToSonatypeRepository -PenableNativeTargets
       env:
@@ -69,7 +69,7 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'gradle/libs.versions.toml') }}
 
     - name: Publish Windows artifacts
-      uses: gradle/gradle-build-action@915a66c096a03101667f9df2e56c9efef558b165 # v2.6.1
+      uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2.7.0
       with:
         arguments: publishMingwX64PublicationToSonatypeRepository -PenableNativeTargets
       env:
