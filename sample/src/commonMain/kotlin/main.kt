@@ -1,16 +1,9 @@
 import com.github.androidpasswordstore.sublimefuzzy.Fuzzy
 
 fun main() {
-  val simpleMatchData =
-    mapOf(
-      ("test" to "tests") to true,
-      ("test" to "tset") to false,
-    )
+  val simpleMatchData = mapOf(("test" to "tests") to true, ("test" to "tset") to false)
   val matchData =
-    mapOf(
-      ("fot" to "FbxImporter.h") to (true to 105),
-      ("fot" to "kot") to (false to 0),
-    )
+    mapOf(("fot" to "FbxImporter.h") to (true to 105), ("fot" to "kot") to (false to 0))
   simpleMatchData.forEach { (match, expected) ->
     val result = Fuzzy.fuzzyMatchSimple(match.first, match.second)
     require(result == expected) {

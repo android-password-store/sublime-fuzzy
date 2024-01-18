@@ -38,7 +38,7 @@ public object Fuzzy {
     maxMatches: Int,
     nextMatchOut: Int,
     recursionCountOut: Int,
-    recursionLimit: Int
+    recursionLimit: Int,
   ): Pair<Boolean, Int> {
     var outScore = 0
     var strCurIndex = strCurIndexOut
@@ -88,7 +88,7 @@ public object Fuzzy {
             maxMatches,
             nextMatch,
             recursionCount,
-            recursionLimit
+            recursionLimit,
           )
 
         if (matched) {
@@ -194,7 +194,7 @@ public object Fuzzy {
       maxMatches,
       0,
       recursionCount,
-      recursionLimit
+      recursionLimit,
     )
   }
 }
