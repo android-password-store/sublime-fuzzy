@@ -11,7 +11,7 @@ kotlinx-benchmark-runtime = { module = "org.jetbrains.kotlinx:kotlinx-benchmark-
 [plugins]
 allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
-kotlinxBCV = "org.jetbrains.kotlinx.binary-compatibility-validator:0.13.2"
+kotlinxBCV = "org.jetbrains.kotlinx.binary-compatibility-validator:0.14.0"
 kotlinxBenchmark = { id = "org.jetbrains.kotlinx.benchmark", version.ref = "benchmark" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 mavenPublish = "com.vanniktech.maven.publish.base:0.27.0"
