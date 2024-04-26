@@ -45,7 +45,7 @@ publishing {
 }
 
 spotless {
-  val ktfmtVersion = "0.47"
+  val ktfmtVersion = "0.49"
   kotlin {
     ktfmt(ktfmtVersion).googleStyle()
     target("**/*.kt")
