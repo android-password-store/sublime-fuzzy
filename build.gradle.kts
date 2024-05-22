@@ -91,14 +91,7 @@ kotlin {
     androidNativeArm64()
   }
 
-  sourceSets {
-    getByName("commonTest") {
-      dependencies {
-        implementation(libs.kotlin.test.core)
-        implementation(libs.kotlin.test.junit)
-      }
-    }
-  }
+  sourceSets { getByName("commonTest") { dependencies { implementation(libs.kotlin.test.core) } } }
 
   jvmToolchain { languageVersion.set(JavaLanguageVersion.of(11)) }
 }
