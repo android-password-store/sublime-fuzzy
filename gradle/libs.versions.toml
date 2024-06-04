@@ -1,5 +1,5 @@
 [versions]
-benchmark = "0.4.10"
+benchmark = "0.4.11"
 kotlin = "2.0.0"
 dokka = "1.9.20"
 
