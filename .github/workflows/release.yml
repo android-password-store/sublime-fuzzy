@@ -38,10 +38,17 @@ jobs:
         path: ~/.konan
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'gradle/libs.versions.toml') }}
 
-    - name: Publish
-      uses: gradle/gradle-build-action@66535aaf56f831b35e3a8481c9c99b665b84dd45 # v3.4.2
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@d9c87d481d55275bb5441eef3fe0e46805f9ef70 # v3
       with:
-        arguments: publishAllPublicationsToSonatypeRepository -PenableNativeTargets
+        gradle-home-cache-cleanup: true
+        cache-read-only: true
+        add-job-summary: always
+        validate-wrappers: true
+
+    - name: Publish
+      shell: bash
+      run: ./gradlew publishAllPublicationsToSonatypeRepository -PenableNativeTargets
       env:
         ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
         ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
@@ -68,10 +75,17 @@ jobs:
         path: ~/.konan
         key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'gradle/libs.versions.toml') }}
 
-    - name: Publish Windows artifacts
-      uses: gradle/gradle-build-action@66535aaf56f831b35e3a8481c9c99b665b84dd45 # v3.4.2
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@d9c87d481d55275bb5441eef3fe0e46805f9ef70 # v3
       with:
-        arguments: publishMingwX64PublicationToSonatypeRepository -PenableNativeTargets
+        gradle-home-cache-cleanup: true
+        cache-read-only: true
+        add-job-summary: always
+        validate-wrappers: true
+
+    - name: Publish Windows artifacts
+      shell: bash
+      run: ./gradlew publishMingwX64PublicationToSonatypeRepository -PenableNativeTargets
       env:
         ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.NEXUS_PUBLISH_GPG_KEY }}
         ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.NEXUS_PUBLISH_GPG_KEY_PASSWORD }}
@@ -91,6 +105,7 @@ jobs:
           username: ${{ secrets.NEXUS_PUBLISH_USERNAME }}
           password: ${{ secrets.NEXUS_PUBLISH_PASSWORD }}
           staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
+
       - name: Release
         if: ${{ needs.publish.result == 'success' && needs.publish_windows.result == 'success' }}
         uses: nexus-actions/release-nexus-staging-repo@36161f25ef98cc3821eabb11ab742d2e9d479e52 # v1.2
