@@ -13,5 +13,5 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlinxBCV = "org.jetbrains.kotlinx.binary-compatibility-validator:0.16.3"
 kotlinxBenchmark = { id = "org.jetbrains.kotlinx.benchmark", version.ref = "benchmark" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-mavenPublish = "com.vanniktech.maven.publish.base:0.29.0"
+mavenPublish = "com.vanniktech.maven.publish.base:0.30.0"
 spotless = "com.diffplug.spotless:6.13.0"
