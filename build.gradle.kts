@@ -3,6 +3,7 @@ import com.vanniktech.maven.publish.KotlinMultiplatform
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
 import org.jetbrains.kotlin.konan.target.HostManager
 
 plugins {
@@ -64,7 +65,7 @@ kotlin {
   js(IR) {
     nodejs {}
     browser {}
-    compilations.configureEach { kotlinOptions { moduleKind = "umd" } }
+    compilerOptions { moduleKind.set(JsModuleKind.MODULE_UMD) }
   }
   if (providers.gradleProperty("enableNativeTargets").isPresent) {
     if (HostManager.hostIsMac) {

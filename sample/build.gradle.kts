@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
+import org.jetbrains.kotlin.gradle.dsl.JsSourceMapEmbedMode
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithHostTests
 import org.jetbrains.kotlin.konan.target.HostManager
 
@@ -15,12 +17,10 @@ kotlin {
     browser()
     nodejs()
     binaries.executable()
-    compilations.all {
-      kotlinOptions {
-        moduleKind = "umd"
-        sourceMap = true
-        sourceMapEmbedSources = null
-      }
+    compilerOptions {
+      moduleKind.set(JsModuleKind.MODULE_UMD)
+      sourceMap.set(true)
+      sourceMapEmbedSources.set(JsSourceMapEmbedMode.SOURCE_MAP_SOURCE_CONTENT_NEVER)
     }
   }
   if (providers.gradleProperty("enableNativeTargets").isPresent) {
