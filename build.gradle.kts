@@ -24,7 +24,7 @@ apiValidation { ignoredProjects.add("benchmark") }
 mavenPublishing {
   signAllPublications()
   pomFromGradleProperties()
-  configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaHtml")))
+  configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaGenerate")))
 }
 
 publishing {
