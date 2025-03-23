@@ -3,10 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JsSourceMapEmbedMode
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithHostTests
 import org.jetbrains.kotlin.konan.target.HostManager
 
-plugins {
-  application
-  kotlin("multiplatform")
-}
+plugins { kotlin("multiplatform") }
 
 fun KotlinNativeTargetWithHostTests.configureTarget() = binaries {
   executable { entryPoint = "main" }
