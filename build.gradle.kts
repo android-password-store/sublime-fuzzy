@@ -1,5 +1,6 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.SonatypeHost
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.withType
@@ -22,27 +23,16 @@ apiValidation { ignoredProjects.add("benchmark") }
 
 @Suppress("UnstableApiUsage")
 mavenPublishing {
+  publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
   signAllPublications()
   pomFromGradleProperties()
-  configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaGenerate")))
-}
-
-publishing {
-  repositories {
-    maven {
-      name = "Sonatype"
-      setUrl {
-        val repositoryId =
-          System.getenv("SONATYPE_REPOSITORY_ID")
-            ?: error("Missing env variable: SONATYPE_REPOSITORY_ID")
-        "https://oss.sonatype.org/service/local/staging/deployByRepositoryId/${repositoryId}/"
-      }
-      credentials {
-        username = System.getenv("SONATYPE_USERNAME")
-        password = System.getenv("SONATYPE_PASSWORD")
-      }
-    }
-  }
+  configure(
+    KotlinMultiplatform(
+      javadocJar = JavadocJar.Dokka("dokkaGenerate"),
+      sourcesJar = true,
+      androidVariantsToPublish = listOf("debug", "release"),
+    )
+  )
 }
 
 spotless {
