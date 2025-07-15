@@ -1,6 +1,5 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
-import com.vanniktech.maven.publish.SonatypeHost
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.withType
@@ -23,16 +22,8 @@ apiValidation { ignoredProjects.add("benchmark") }
 
 @Suppress("UnstableApiUsage")
 mavenPublishing {
-  publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
-  signAllPublications()
   pomFromGradleProperties()
-  configure(
-    KotlinMultiplatform(
-      javadocJar = JavadocJar.Dokka("dokkaGenerate"),
-      sourcesJar = true,
-      androidVariantsToPublish = listOf("debug", "release"),
-    )
-  )
+  configure(KotlinMultiplatform(javadocJar = JavadocJar.Dokka("dokkaGenerate"), sourcesJar = true))
 }
 
 spotless {
